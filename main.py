@@ -79,3 +79,9 @@ async def generate_image(request: Request, prompt: str):
         media_type="image/png",
         headers={"Content-Disposition": "inline; filename=img.png"}
     )
+
+
+
+@app.get('/')
+async def avoid_idle():
+    return {'gg':'gg'}
