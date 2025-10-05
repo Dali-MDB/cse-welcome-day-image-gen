@@ -1,0 +1,15 @@
+# Virtual environment
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+
+# Generated images (if any)
+*.png
+rslt.png
