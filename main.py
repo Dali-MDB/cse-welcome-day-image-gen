@@ -9,6 +9,8 @@ import os
 import io
 import requests
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
+
 
 load_dotenv()
 
@@ -34,6 +36,13 @@ def api_call(prompt: str, key: str):
 # Initialize rate limiter
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],    
+    allow_credentials=True,
+    allow_methods=["*"],    
+    allow_headers=["*"],    
+)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
